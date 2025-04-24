@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Code OTP</title>
+</head>
+<body>
+    <h1>Dernier code OTP reçu :</h1>
+    <p id="code">Chargement...</p>
+
+    <script>
+        async function fetchCode() {
+            const res = await fetch("/code");
+            const data = await res.json();
+            document.getElementById("code").textContent = data.code || "Aucun code reçu";
+        }
+        fetchCode();
+        setInterval(fetchCode, 5000);
+    </script>
+</body>
+</html>

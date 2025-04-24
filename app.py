@@ -55,6 +55,7 @@ def get_code():
 
 if __name__ == '__main__':
     t = threading.Thread(target=fetch_email_code)
+    port = int(os.environ.get("PORT", 10000))
     t.daemon = True
     t.start()
-    app.run(host='0.0.0.0', port=10000)
+    app.run(host='0.0.0.0', port=port)
